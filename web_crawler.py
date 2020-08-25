@@ -86,10 +86,10 @@ def all_crawled():
     for doc in db.linkcol.find({}):
         if doc['Last Crawled']!='Never':
             time_diff = datetime.now()-doc['Last Crawled']
-            if time_diff.days<1:
-                count+=1
+            if time_diff.days>=1:
+                count=count+1
         else:
-            count+=1
+            count=count+1
     return count
 
 def get_all_uncrawled():
